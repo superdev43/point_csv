@@ -1,0 +1,106 @@
+{#
+* Plugin Name : SalesRanking
+*
+* Copyright (C) 2015 BraTech Co., Ltd. All Rights Reserved.
+* http://www.bratech.co.jp/
+*
+* For the full copyright and license information, please view the LICENSE
+* file that was distributed with this source code.
+#}
+
+
+<!-- ▼item_list▼ -->
+	<div class="row info_rank_row">
+		<div class="col-xs-12 col-lg-6 box info_box">
+			<div class="bg_box">
+				<h2><img src="/img/home/h_info.png" alt="Information" /></h2>
+
+				{{ php_file_get_contents('http://tiara-collection-com.check-xserver.jp/studio/wp_feed.php') }}
+			</div>
+		</div><!-- /.info_box -->
+
+		<!--売上ランキング-->
+		{% if ItemList %}
+		<div class="col-xs-12 col-lg-6 box rank_box">
+			<div class="bg_box">
+				<h2><img src="/img/home/h_rank.png" alt="Ranking" /></h2>
+
+				<ul id="item_list" class="rank_list">
+
+					{% for Item in ItemList  %}
+					<li class="col-xs-4">
+						<div class="pickup_item">
+							<a href="{{ url('product_detail', {'id': Item.id}) }}">
+								<div class=img_box">
+									<p><img src="{{ app.config.image_save_urlpath }}/{{ Item.main_list_image|no_image_product }}"></p>
+								</div>
+								<div class="text_box">
+									<p class="item_name product_name"><span class="label-warning none">{{loop.index}}位</span>{{Item.name}}</p>
+									<p class="item_price price">
+										{% if Item.hasProductClass -%}
+											{% if Item.getPrice02Min == Item.getPrice02Max %}
+												<span class="normal_price"><span class="price01_default">{{ Item.getPrice02IncTaxMin|price }}</span></span>
+											{% elseif Item.getPrice02Min is not null and Item.getPrice02Max is not null %}
+												<span class="normal_price"><span class="price01_default">{{ Item.getPrice02IncTaxMin|price }}</span> ～ <span class="price01_default">{{ Item.getPrice02IncTaxMax|price }}</span></span>
+											{% endif %}
+										{% else -%}
+											{% if Item.getPrice02Max is not null %}
+												<span class="normal_price"><span class="price01_default">{{ Item.getPrice02IncTaxMin|price }}</span></span>
+											{% endif %}
+										{% endif -%}
+									</p>
+								</div>
+							</a>
+						</div>
+					</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+		{% endif %}
+
+
+
+
+
+
+
+		<div id="item_list" class="rank_list">
+			<ul class="rank_list">
+				{% for RecommendProduct in recommend_products %}
+				<li class="col-xs-4">
+					<div class="pickup_item">
+						<a href="{{ url('product_detail', {'id': RecommendProduct.Product.id}) }}">
+							<div class="img_box">
+								<p><img src="{{ app.config.image_save_urlpath }}/{{ RecommendProduct.Product.mainFileName|no_image_product }}"></p>
+							</div>
+									
+							<div class="text_box">
+								<p class="item_comment none">{{ RecommendProduct.comment|raw|nl2br }}</p>
+
+								<p class="item_name product_name">{{ RecommendProduct.Product.name }}</p>
+								<p class="item_price price">
+									{% if RecommendProduct.Product.hasProductClass %}
+										{% if RecommendProduct.Product.getPrice02Min == RecommendProduct.Product.getPrice02Max %}
+											{{ RecommendProduct.Product.getPrice02IncTaxMin|price }}
+										{% else %}
+											{{ RecommendProduct.Product.getPrice02IncTaxMin|price }} ～ {{ RecommendProduct.Product.getPrice02IncTaxMax|price }}
+										{% endif %}
+									{% else %}
+										{{ RecommendProduct.Product.getPrice02IncTaxMin|price }}
+									{% endif %}
+								</p>
+							</div>
+						</a>
+					</div>
+				</li>
+				{% endfor %}
+			</ul>
+		</div>
+
+	</div><!-- /.info_rank_row -->
+
+
+
+
+<!-- ▲item_list▲ -->

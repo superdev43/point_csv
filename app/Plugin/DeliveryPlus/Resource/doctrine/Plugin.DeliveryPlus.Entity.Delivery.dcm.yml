@@ -1,0 +1,28 @@
+Plugin\DeliveryPlus\Entity\Delivery:
+    type: entity
+    table: plg_deliveryplus_dtb_delivery
+    repositoryClass: Plugin\DeliveryPlus\Repository\DeliveryRepository
+    id:
+        delivery_id:
+            type: integer
+            nullable: false
+    fields:
+        weight_min:
+            type: integer
+            nullable: true
+        weight_max:
+            type: integer
+            nullable: true
+        size_min:
+            type: integer
+            nullable: true
+        size_max:
+            type: integer
+            nullable: true
+        subtotal_min:
+            type: integer
+            nullable: true
+        subtotal_max:
+            type: integer
+            nullable: true
+    lifecycleCallbacks: {  }

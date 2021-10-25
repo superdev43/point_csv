@@ -1,0 +1,33 @@
+{#
+* Plugin Name : DeliveryPlus
+*
+* Copyright (C) 2016 BraTech Co., Ltd. All Rights Reserved.
+* http://www.bratech.co.jp/
+*
+* For the full copyright and license information, please view the LICENSE
+* file that was distributed with this source code.
+#}
+
+<style>
+.weight_size {
+  border: 1px solid #d9d9d9;
+  margin-bottom: 20px;
+  padding: 10px;
+  text-align: center;
+  background: #f8f8f8;
+}
+.weight_size p {
+  display: inline-block;
+  margin: 0 15px;
+}
+</style>
+
+<div class="weight_size">
+{% if total_weight %}
+    <p>重さ： <span>{{ total_weight }}</span> </p>
+{% endif %}
+
+{% if total_size %}
+    <p>サイズ： <span>{{ total_size }}</span> </p>
+{% endif %}
+</div>

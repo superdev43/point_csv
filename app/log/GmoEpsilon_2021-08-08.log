@@ -1,0 +1,8 @@
+[2021-08-08 09:26:46] gmoepsilon.INFO: pay process start. order_id = 23768 [] []
+[2021-08-08 09:27:46] gmoepsilon.INFO: pay process end. order_id = 23768 [] []
+[2021-08-08 10:00:28] gmoepsilon.INFO: pay process start. order_id = 23770 [] []
+[2021-08-08 10:00:45] gmoepsilon.INFO: back. order_id = 23770 new_order_id = 23771 [] []
+[2021-08-08 10:02:07] gmoepsilon.INFO: pay process start. order_id = 23771 [] []
+[2021-08-08 10:04:51] gmoepsilon.INFO: pay process end. order_id = 23771 [] []
+[2021-08-08 22:29:00] gmoepsilon.INFO: pay process start. order_id = 23773 [] []
+[2021-08-08 22:29:42] gmoepsilon.INFO: pay process end. order_id = 23773 [] []

@@ -1,0 +1,26 @@
+{#
+ * This file is part of the Recommend Product plugin
+ *
+ * Copyright (C) 2016 LOCKON CO.,LTD. All Rights Reserved.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+#}
+
+	<div class="row event_row">
+
+		<div class="col-xs-12 col-lg-12 box event_box">
+			<div class="match_height bg_box">
+<div class="inner">
+				<h2><img src="/img/home/h_event.png" alt="Event" /></h2>
+
+				{{ php_file_get_contents('http://tiara-collection-com.check-xserver.jp/studio/wp_event_feed.php') }}
+
+				<ul class="btn_more">
+					<li><a href="/studio/category/event/">一覧はこちら</a></li>
+				</ul>
+			</div>
+</div>
+		</div><!-- /.event_box -->
+
+	</div><!-- /.row -->

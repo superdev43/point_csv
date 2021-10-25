@@ -1,0 +1,16 @@
+Plugin\DeliveryPlus\Entity\ProductClass:
+    type: entity
+    table: plg_deliveryplus_dtb_product_class
+    repositoryClass: Plugin\DeliveryPlus\Repository\ProductClassRepository
+    id:
+        product_class_id:
+            type: integer
+            nullable: false
+    fields:
+        weight:
+            type: integer
+            nullable: true
+        size:
+            type: integer
+            nullable: true
+    lifecycleCallbacks: {  }

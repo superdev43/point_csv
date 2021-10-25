@@ -1,0 +1,21 @@
+Plugin\DeliveryPlus\Entity\DeliveryCool:
+    type: entity
+    table: plg_deliveryplus_dtb_delivery_cool
+    repositoryClass: Plugin\DeliveryPlus\Repository\DeliveryCoolRepository
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: cool_type_id
+            generator:
+                strategy: AUTO
+    fields:
+        delivery_id:
+            type: integer
+            nullable: false
+        type:
+            type: integer
+            nullable: true
+    lifecycleCallbacks: {  }

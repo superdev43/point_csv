@@ -1,0 +1,77 @@
+<script src="/studio/wp-content/themes/tiara/js/instafeed.min.js"></script>
+
+<script type="text/javascript">
+$(function() {
+	$('.shop_info .box_height').matchHeight();
+	$('#top_about .box').matchHeight();
+});
+</script>
+
+<script>
+$(function() {
+	$('#top_product_tab .select_area li img').mouseover(function() {
+		if($(this).hasClass('current') ) {
+
+		}else{
+			$(this).attr('src', $(this).attr('src').replace('_off', '_on')).addClass('active');
+		}
+	});
+
+	$('#top_product_tab .select_area li img').mouseleave(function() {
+		if($(this).hasClass('current') ) {
+
+		}else{
+			$(this).attr('src', $(this).attr('src').replace('_on', '_off')).removeClass('active');
+		}
+	});
+
+	$('#top_product_tab .select_area li img').click(function() {
+		var index = $('#top_product_tab .select_area li img').index(this);
+		$('#top_product_tab .select_area li img').removeClass('current');
+		$(this).attr('src', $(this).attr('src').replace('_off', '_on')).addClass('current');
+		$('#top_product_tab .select_area li img').each(function() {
+			if($(this).hasClass('current')) {
+
+			}else{
+				$(this).attr('src', $(this).attr('src').replace('_on', '_off')).removeClass('active');
+			}
+		});
+
+
+		$('#top_product_tab .tab_box').hide();
+		$('#top_product_tab .tab_box').eq(index).fadeIn();
+	});
+});
+</script>
+
+<script>
+$(function() {
+
+	$(document).click(function(event) {
+		if(!$(event.target).closest('#bloc_over_password_info .center_box').length) {
+			//console.log('外側がクリックされました。');
+			$('#bloc_over_password_info').fadeOut();
+		} else {
+			//console.log('内側がクリックされました。');
+		}
+	});
+	$('#bloc_over_password_info .btn_close img').click(function() {
+		$('#bloc_over_password_info').fadeOut();
+	});
+});
+
+
+</script>
+
+<script src="/js/jquery.bxslider/jquery.bxslider.js"></script>
+<link rel="stylesheet" href="/js/jquery.bxslider/jquery.bxslider.css">
+<script>
+$(function() {
+    $('.main_visual_sp').bxSlider({
+	auto: true,
+        slideMargin: 0,
+	pager: false,
+	controls: false
+    });
+});
+</script>

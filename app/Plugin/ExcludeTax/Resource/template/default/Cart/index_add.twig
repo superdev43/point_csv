@@ -1,0 +1,9 @@
+<span class="small">(うち消費税{%- if CartOptions is defined -%}
+	{% if CartOptions[key] is defined %}
+	{{ (CartOptions[key].option_price_inc_tax - CartOptions[key].option_price + CartItem.Object.price02_inc_tax - CartItem.Object.price02)|price }})
+	{% else %}
+		{{ (CartItem.Object.price02_inc_tax - CartItem.Object.price02)|price }})
+	{% endif %}
+	{%- else -%}
+		{{ (CartItem.Object.price02_inc_tax - CartItem.Object.price02)|price }})
+	{%- endif -%}</span>

@@ -1,0 +1,121 @@
+<div class="shop_info">
+		<div class="inner">
+			<div class="row">
+				<div class="v_row col-md-6">
+					<div class="box box_deliv_price">
+						<h3>送料について</h3>
+						<p><strong>5,000円</strong>(税別)以上お買い上げで→<strong>送料無料</strong></p>
+						<p class="all_pref">全国一律送料600円</p>
+						<p>ネコポス便がご利用頂けます。詳しくは<a href="{{ url('homepage') }}help/guide#row_deliv_mail">コチラ</a>をご覧下さい。</p>
+					</div>
+
+					<div class="box box_payment">
+						<h3>お支払について</h3>
+						<dl>
+							<dt>クレジット</dt>
+							<dd>下記カードがご利用頂けます<br><img src="/img/home/cards5.png" alt="カード" /></dd>
+							<dt>銀行振込</dt>
+							<dd>原則としてご入金確認後の発送手配とさせて頂いております。<br>7 日以内にご入金のない場合、ご注文をキャンセルとさせていただきます。<br>【取り扱い銀行口座】<br>三菱U F J 銀行　光明池支店<br>普通　0170697<br>カブシキガイシャグランジュテ</dd>
+							<dt>代金引換</dt>
+							<dd>商品到着時に配達員にお支払い頂く方法です。<br>別途代引き手数料が必要となります。</dd>
+							<dt>プライバシーポリシー</dt>
+							<dd>ティアラでは、お客様とのやり取りで得た個人情報(氏名、電話番号、住所、Email アドレス、ご購入商品)は、当社が責任をもって安全に蓄積・保管し、裁判所・警察関係等、公共機関からの提出要請があった場合以外の第三者に譲渡または利用することは一切ございません。どうぞ安心してご利用下さい。</dd>
+					</div>
+
+					<div class="col-xs-6 box box_height box_cal">
+
+
+
+{# CSSの初期設定読込 #}
+<link rel="stylesheet" href="{{ app.config.front_urlpath }}/css/pg_calendar.css">
+<div id="calendar" class="calendar hidden-xs">
+	<div class="calendar_title none">カレンダー</div>
+{% for roop in 0..(HolidayConfig['0']['config_data']-1) %}
+{% set day = date('first day of this month') %}
+{% set month = day|date_modify("+" ~ roop ~ " month")|date('n') %}
+{% set year = day|date_modify("+" ~ roop ~ " month")|date('Y') %}
+
+{% if (month == "12") %}
+{% set roop_week = 5 %}
+{% elseif (month != "1") %}
+{% set roop_week = day|date_modify("+" ~ (roop+1) ~ " month")|date_modify('-1 day')|date('W') - day|date_modify(year ~ "-" ~ month ~ "-" ~ "01")|date('W') %}
+{% else %}
+{% set roop_week = day|date_modify("+" ~ (roop+1) ~ " month")|date_modify('-1 day')|date('W') - 1 %}
+{% endif %}
+
+{% if ((day|date_modify("+" ~ (roop+1) ~ " month")|date_modify('-1 day')|date('w')) == "0") %}
+{% set roop_week = (roop_week+1) %}
+{% endif %}
+{% set day = day|date_modify("+" ~ roop ~ " month")|date_modify('-' ~ day|date_modify("+" ~ roop ~ " month")|date('w') ~ 'days') %}
+
+	<table>
+		<caption>{{ year }}年{{ month }}月の休業日</caption>
+		<thead><tr><th id="sunday">日</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th id="saturday">土</th></tr></thead>
+		<tbody>
+{% for i in (0..roop_week) %}
+			<tr>
+{% for j in (0..6) %}
+{% if day|date('n') == month %}
+{% if HolidayWeek[j] %}
+				<td class="holiday">{{ day|date('j') }}</td>
+{% else %}
+{% if Holidays[month][day|date('j')] is defined and Holidays[month][day|date('j')] is not empty %}
+				<td class="holiday">{{ day|date('j') }}</td>
+{% else %}
+				<td>{{ day|date('j') }}</td>
+{% endif %}
+{% endif %}
+{% else %}
+				<td>&nbsp;</td>
+{% endif %}
+{% set day = day|date_modify('+1day') %}
+{% endfor %}
+			</tr>
+{% endfor %}
+		</tbody>
+	</table>
+{% endfor %}
+</div>
+
+
+<span class="closed_color">休業日</span>
+					</div>
+
+					<div class="col-xs-6 box box_height box_access"><a href="{{ url('homepage') }}access">
+							<div class="img_box">
+								<p><img src="/img/common/foot/shop_access.jpg" alt="アクセス" /></p>
+							</div>
+						<h3>店舗紹介・アクセスはこちら</h3>
+					</a></div>
+				</div>
+
+				<div class="v_row col-md-6">
+					<div class="box box_deliv">
+						<h3>商品発送について</h3>
+						<dl>
+							<dt>＜オーダー以外の商品の場合＞</dt>
+							<dd>クレジット決済・代引きの場合は、商品が揃い次第発送致します。<br>銀行振り込みの場合は、ご入金確認後発送いたします。</dd>
+							<dt>＜プチオーダー、セレクトオーダー商品の場合＞</dt>
+							<dd>代引きの場合は、オーダー確定後製作し（製作日数~14 日ほど）、発送いたします。<br>銀行振り込みの場合は、ご入金確認後製作し（製作日数~14 日ほど）、発送いたします。</dd>
+						</dl>
+					</div>
+
+					<div class="box box_deliv">
+						<h3>配達時間指定について</h3>
+						<p>【午前】午前中 【午後】14:00~16:00<br>【夕方】16:00~18:00 【夜間】18:00~20:00<br>【夜間】19:00~21:00</p>
+						<p>地域によってご希望の時間帯に配達できない場合もございます。<br>天候・交通事情によりご希望の時間帯にお届けできない場合がございます。</p>
+					</div>
+
+					<div class="box box_deliv">
+						<h3>返品交換について</h3>
+						<p>原則としてお受けできません。<br>不良品またはこちらのミスでご注文と違う商品が届いた場合に限り3営業日以内にご連絡下さい。<br>3営業日以降のご連絡による交換・返品はお受けいたしかねます。</p>
+					</div>
+
+					<div class="box box_deliv">
+						<h3>メールに関しての重要なお知らせ</h3>
+						<p>自動で『迷惑メール』として処理され、受信トレイに届かない場合がございます。<br>ティアラからの受注確認メールが届かない場合は、お電話でお問合せ下さい。<br>また、ティアラより送信した際にメールエラーで返ってくる場合もございます。<br>お電話にて確認させていただきますので、ご入力は必ず『ご連絡可能な電話番号』でお願いします。</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div><!-- /.shop_info -->

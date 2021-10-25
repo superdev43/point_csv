@@ -1,0 +1,6 @@
+name: 税抜き表記プラグイン
+code: ExcludeTax
+version: 1.0.0
+event: Event
+service:
+    - ExcludeTaxServiceProvider

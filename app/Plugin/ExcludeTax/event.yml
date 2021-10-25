@@ -1,0 +1,15 @@
+Product/list.twig:
+    - [onProductListRender, LAST]
+Product/detail.twig:
+    - [onProductDetailRender, LAST]
+Block/cart.twig:
+    - [onBlockCartRender, NORMAL]
+Cart/index.twig:
+    - [onCartIndexRender, NORMAL]
+# Plugin Support
+Block/category_recommend_product_block.twig:
+    - [onRecommendProductBlock, NORMAL]
+Block/recommend_product_block.twig:
+    - [onRecommendProductBlock, NORMAL]
+Block/checkeditem.twig:
+    - [onCheckedItemBlock, NORMAL]

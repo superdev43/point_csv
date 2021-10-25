@@ -1,0 +1,35 @@
+{% if PageLayout.url == "homepage" %}
+
+{% elseif PageLayout.url == "product_list" %}
+    <!-- ▼topicpathbloc▼ -->
+    <div id="topicpath" class="row">
+	<div class="inner">
+
+        <ol id="list_header_menu" class="">
+            <li><a href="{{ url('homepage') }}">バレエ用品・レオタード 通販｜バレエショップtiara(ティアラ)</a></li>
+            <li><a href="{{ url('product_list') }}">全商品</a></li>
+            {% if Category is not null %}
+                {% for Path in Category.path %}
+                    <li><a href="{{ url('product_list') }}?category_id={{ Path.id }}">{{ Path.name }}</a></li>
+                {% endfor %}
+            {% endif %}
+            {% if search_form.vars.value.name %}
+            <li>「{{ search_form.vars.value.name }}」の検索結果</li>
+            {% endif %}
+        </ol>
+
+	</div>
+    </div>
+    <!-- ▲topicpath▲ -->
+{% elseif PageLayout.url == "product_detail" %}
+
+{% else %}
+<div id="bread_crumb">
+<div class="inner">
+	<ul>
+		<li><a href="/">バレエ用品・レオタード 通販｜バレエショップtiara(ティアラ)</a></li>
+		<li>{{ title }}</li>
+	</ul>
+</div><!-- /.inner -->
+</div><!-- /#breadcrumb -->
+{% endif %}

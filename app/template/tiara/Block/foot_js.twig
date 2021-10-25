@@ -1,0 +1,109 @@
+<script>
+$(function() {
+	$('#gnav .btn_search span').click(function() {
+		$('.search_tgl').toggleClass('active');
+		$('#search').toggleClass('active');
+	});
+	$('#gnav .btn_ac').mouseover(function() {
+		var index = $('#gnav .btn_ac').index(this);
+		$('#gnav ul.lv2').eq(index).stop(false,true).fadeIn();
+	});
+	$('#gnav .btn_ac').mouseleave(function() {
+		var index = $('#gnav .btn_ac').index(this);
+		$('#gnav ul.lv2').eq(index).stop(false,true).hide();
+	});
+});
+</script>
+
+<script>
+$(function() {
+	$('.match_height').matchHeight();
+});
+</script>
+
+
+
+
+<script src="/js/scrollsmoothly.js" type="text/javascript"></script>
+
+
+{% if Category.id == 7 or Category.id == 15 or Category.id == 10 or Category.id == 9 or Category.id == 11 or Category.id == 21 or Category.id == 12 %}
+<script>
+$(function() {
+	$('#gnav li.btn_ac').eq(0).addClass('active');
+});
+</script>
+{% endif %}
+
+{% if Category.id == 13 or Category.id == 18 %}
+<script>
+$(function() {
+	$('#gnav li.btn_ac').eq(1).addClass('active');
+});
+</script>
+{% endif %}
+
+{% if Category.id == 14 or Category.id == 17 or Category.id == 19 or Category.id == 24 or Category.id == 25  or Category.id == 26 %}
+<script>
+$(function() {
+	$('#gnav li.btn_ac').eq(2).addClass('active');
+});
+</script>
+{% endif %}
+
+
+<script>
+$(function () {
+	var nav_position = $("#gnav").offset().top;
+	//var nav_position = 154;
+
+	$(window).on('load scroll resize', function () {
+		var nav_height = $("#gnav").height();
+		var w_top = $(this).scrollTop();
+		var h_height = $("#masthead").height();
+
+		if ($(window).width() < 768) {
+			//if(w_top >= nav_position_sp) {
+			//	$('#masthead').css({paddingBottom: nav_height_sp});
+			//	$("#gnav_sp").css({position:"fixed",top:"0",left:"0",zIndex:"10"});
+			//}else{
+			//	$('#masthead').css({paddingBottom: "0"});
+			//	$("#gnav_sp").css({position:"relative"});
+			//}
+		}else{
+			if(w_top >= nav_position) {
+				$('#masthead').css({paddingBottom: nav_height});
+				$("#gnav").css({position:"fixed",top:"0",left:"0",zIndex:"10"});
+			}else{
+				$('#masthead').css({paddingBottom: "0"});
+				$("#gnav").css({position:"relative"});
+			}
+		}
+	});
+
+});
+</script>
+
+
+
+<script src="/js/malihu_scrollbar/jquery.mCustomScrollbar.js" type="text/javascript"></script>
+<link rel="stylesheet" href="/js/malihu_scrollbar/jquery.mCustomScrollbar.css">
+<script>
+$(function(){
+  $(window).load(function(){
+     $("#page_product_detail .slick-dots").mCustomScrollbar();
+  });
+});
+</script>
+
+
+<script>
+$(function() {
+	$('#fixed_icons .btn_shopinfo').click(function() {
+		$('#fixed_shop_info').fadeIn();
+	});
+	$('#fixed_shop_info p.btn_close').click(function() {
+		$('#fixed_shop_info').fadeOut();
+	});	
+});
+</script>

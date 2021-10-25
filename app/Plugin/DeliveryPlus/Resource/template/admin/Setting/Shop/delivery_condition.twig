@@ -1,0 +1,64 @@
+{#
+* Plugin Name : DeliveryPlus
+*
+* Copyright (C) 2016 BraTech Co., Ltd. All Rights Reserved.
+* http://www.bratech.co.jp/
+*
+* For the full copyright and license information, please view the LICENSE
+* file that was distributed with this source code.
+#}
+
+<div id="delivery_plg_deliveryplus_box" class="box accordion clearfix">
+    <div id="delivery_plg_deliveryplus_box__toggle" class="box-header toggle">
+        <h3 class="box-title">条件設定<svg class="cb cb-angle-down icon_down"> <use xlink:href="#cb-angle-down" /></svg></h3>
+    </div>
+    <div id="delivery_plg_deliveryplus_box__body_inner" class="box-body accpanel" style="display: block;">
+        <div id="delivery_plg_deliveryplus_box__item" class="form-group">
+                <label id="delivery_plg_deliveryplus_box__header_weight_min" class="col-sm-2 control-label">
+                    重さ条件
+                </label>
+                <div id="delivery_plg_deliveryplus_box__weight_min" class="col-sm-4 fees_area">
+                    {{ form_widget(form.deliveryplus_weight_min) }}
+                    {{ form_errors(form.deliveryplus_weight_min) }}
+                </div>
+                <label id="delivery_plg_deliveryplus_box__header_weight_max" class="col-sm-2 control-label">
+                    ～
+                </label>
+                <div id="delivery_plg_deliveryplus_box__weight_max" class="col-sm-4 fees_area">
+                    {{ form_widget(form.deliveryplus_weight_max) }}
+                    {{ form_errors(form.deliveryplus_weight_max) }}
+                </div>
+                <label id="delivery_plg_deliveryplus_box__header_size_min" class="col-sm-2 control-label">
+                    サイズ条件
+                </label>
+                <div id="delivery_plg_deliveryplus_box__size_min" class="col-sm-4 fees_area">
+                    {{ form_widget(form.deliveryplus_size_min) }}
+                    {{ form_errors(form.deliveryplus_size_min) }}
+                </div>
+                <label id="delivery_plg_deliveryplus_box__header_size_max" class="col-sm-2 control-label">
+                    ～
+                </label>
+                <div id="delivery_plg_deliveryplus_box__size_max" class="col-sm-4 fees_area">
+                    {{ form_widget(form.deliveryplus_size_max) }}
+                    {{ form_errors(form.deliveryplus_size_max) }}
+                </div>
+                <label id="delivery_plg_deliveryplus_box__header_subtotal_min" class="col-sm-2 control-label">
+                    購入金額条件
+                </label>
+                <div id="delivery_plg_deliveryplus_box__delivery_subtotal_min" class="col-sm-4 fees_area">
+                    {{ form_widget(form.deliveryplus_subtotal_min) }}
+                    {{ form_errors(form.deliveryplus_subtotal_min) }}
+                </div>
+                <label id="delivery_plg_deliveryplus_box__header_subtotal_max" class="col-sm-2 control-label">
+                    ～
+                </label>
+                <div id="delivery_plg_deliveryplus_box__subtotal_max" class="col-sm-4 fees_area">
+                    {{ form_widget(form.deliveryplus_subtotal_max) }}
+                    {{ form_errors(form.deliveryplus_subtotal_max) }}
+                </div>
+        </div>
+        {% if form.deliveryplus_cool_type is defined %}
+            {{ form_row(form.deliveryplus_cool_type) }}
+        {% endif %}
+    </div>
+</div>

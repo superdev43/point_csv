@@ -1,0 +1,140 @@
+{#
+This file is part of EC-CUBE
+
+Copyright(c) 2000-2015 LOCKON CO.,LTD. All Rights Reserved.
+
+http://www.lockon.co.jp/
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+#}
+{% extends 'default_frame.twig' %}
+
+{% set body_class = 'front_page' %}
+
+{% block javascript %}
+<script>
+$(function(){
+    //$('.main_visual_sp').slick({
+        //dots: true,
+	//autoplay: true,
+	//arrows: false,
+        //infinite: true,
+	//speed: 300,
+	//slidesToShow: 1,
+	//centerMode: true,
+	//centerPadding: '0px',
+	//variableWidth: true
+    //});
+
+
+
+
+
+    $('.main_visual').slick({
+        //dots: true,
+	autoplay: true,
+	arrows: false,
+        infinite: true,
+	speed: 300,
+	slidesToShow: 1,
+	centerMode: true,
+	variableWidth: true
+    });
+});
+</script>
+{% endblock %}
+
+{% block main %}
+	<div class="mv_row">
+		<div class="col-sm-12">
+			<ul class="main_visual_sp pc_hide">
+				<li class="item">
+					<img src="/img/home/mainimg01.jpg">
+				</li>
+				<li class="item">
+					<img src="/img/home/mainimg02.jpg">
+				</li>
+				<li class="item">
+					<img src="/img/home/mainimg03.jpg">
+				</li>
+				<li class="item">
+					<img src="/img/home/mainimg04.jpg">
+				</li>
+			</ul>
+
+			<div class="main_visual smart_hide tablet_hide">
+				<!--<div class="item">
+					<img src="{{ app.config.front_urlpath }}/img/top/mv01.jpg">
+				</div>-->
+				<div class="item">
+					<img data-lazy="/img/home/mainimg01.jpg">
+				</div>
+				<div class="item">
+					<img data-lazy="/img/home/mainimg02.jpg">
+				</div>
+				<div class="item">
+					<img data-lazy="/img/home/mainimg03.jpg">
+				</div>
+				<div class="item">
+					<img data-lazy="/img/home/mainimg04.jpg">
+				</div>
+			</div>
+		</div>
+	</div><!-- /.row -->
+
+	<!--<div class="row bnrs_row">
+		<div class="col-xs-6 col-sm-3 link_box">
+			<a href="">
+				<div class="img_box">
+					<img src="/img/common/head//bnr_other.jpg" alt="その他オススメ" />
+				</div>
+				<div class="text_box">
+					<p>その他オススメ</p>
+				</div>
+			</a>
+		</div>
+		<div class="col-xs-6 col-sm-3 link_box">
+			<a href="">
+				<div class="img_box">
+					<img src="/img/common/head//bnr_harukas.jpg" alt="ハルカス店" />
+				</div>
+				<div class="text_box">
+					<p>ハルカス店</p>
+				</div>
+			</a>
+		</div>
+		<div class="col-xs-6 col-sm-3 link_box">
+			<a href="">
+				<div class="img_box">
+					<img src="/img/common/head//bnr_other.jpg" alt="その他オススメ" />
+				</div>
+				<div class="text_box">
+					<p>その他オススメ</p>
+				</div>
+			</a>
+		</div>
+		<div class="col-xs-6 col-sm-3 link_box">
+			<a href="">
+				<div class="img_box">
+					<img src="/img/common/head//bnr_harukas.jpg" alt="ハルカス店" />
+				</div>
+				<div class="text_box">
+					<p>ハルカス店</p>
+				</div>
+			</a>
+		</div>
+	</div>--><!-- /.bnrs_row -->
+
+{% endblock %}

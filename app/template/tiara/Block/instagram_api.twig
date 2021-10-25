@@ -1,0 +1,186 @@
+{#
+ This file is part of EC-CUBE
+
+ Copyright(c) 2000-2015 LOCKON CO.,LTD. All Rights Reserved.
+ http://www.lockon.co.jp/
+
+ For the full copyright and license information, please view the LICENSE
+ file that was distributed with this source code.
+#}
+
+<!--InstaAPI-->
+<!--エラーメッセージ 出力しない-->
+<!--{{ error }}-->
+
+{% block javascript %}
+<script>
+$(function(){
+    $('.instagram_visual').slick({
+        dots: true,
+        arrows: false,
+        autoplay: true,
+        speed: 300,
+        slidesToShow: 2,
+	slidesToScroll: 2,
+        responsive: [
+   {
+     breakpoint: 1024,
+     settings: {
+       dots: true,
+       arrows: false,
+       autoplay: true,
+       speed: 300,
+       slidesToShow: 2,
+     }
+   },
+   {
+     breakpoint: 600,
+     settings: {
+       dots: true,
+       arrows: false,
+       autoplay: true,
+       speed: 300,
+       slidesToShow: 2,
+     }
+   },
+   {
+     breakpoint: 480,
+     settings: {
+       dots: true,
+       arrows: false,
+       autoplay: true,
+       speed: 300,
+       slidesToShow: 2,
+     }
+   }
+  ]
+    });
+});
+</script>
+{% endblock %}
+
+{% block main %}
+
+<div class="row info_row">
+<div class="inner">
+
+
+
+  {% if datas %}
+  <div class="col-xs-12 col-md-6 item_gallery insta_gallery">
+    <div class="match_height bg_box">
+    <h2><img src="/img/home/h_insta.png" alt="Instagram" /></h2>
+       <div class="col-sm-12">
+            <div class="instagram_visual">
+              {% for data in datas  %}
+                <div class="item hover">
+                  <a href="{{ data['link'] }}" target="_blank" class="hover" >
+                    <img src= "{{ data['images']['low_resolution']['url'] }}" class="hover">
+
+                    <div style="margin:3px 3px 0 3px;">
+                      ♥ {{data['likes']['count']|number_format }} likes <br>
+                      comments {{data['comments']['count']|number_format }}<br>
+
+                      {% if data['caption'] %}
+                        {% if data['caption']['text']|length > 24 %}
+                          {{ data['caption']['text'][:24]~'...' }}
+                        {% else %}
+                          {{ data['caption']['text'] }}
+                        {% endif %}
+                      {% endif %}
+                    </div>
+
+                  </a>
+                </div>
+              {% endfor %}
+            </div>
+        </div>
+  </div>
+  </div>
+  {% endif %}
+
+	<div class="col-xs-12 col-md-6 box info_box">
+		<div class="match_height bg_box">
+
+			<h2><img src="/img/home/h_info.png" alt="Information" /></h2>
+			
+			<ul class="info_list">
+				{{ php_file_get_contents('http://tiara-collection-com.check-xserver.jp/studio/wp_feed.php') }}
+
+
+				<li class="col-xs-12 col-sm-6 col-md-6">
+{# CSSの初期設定読込 #}
+<link rel="stylesheet" href="{{ app.config.front_urlpath }}/css/pg_calendar.css">
+<div id="calendar" class="calendar hidden-xs">
+	<div class="calendar_title none">カレンダー</div>
+{% for roop in 0..(HolidayConfig['0']['config_data']-1) %}
+{% set day = date('first day of this month') %}
+{% set month = day|date_modify("+" ~ roop ~ " month")|date('n') %}
+{% set year = day|date_modify("+" ~ roop ~ " month")|date('Y') %}
+
+{% if (month != "1") %}
+{% set roop_week = day|date_modify("+" ~ (roop+1) ~ " month")|date_modify('-1 day')|date('W') - day|date_modify(year ~ "-" ~ month ~ "-" ~ "01")|date('W') %}
+{% else %}
+{% set roop_week = day|date_modify("+" ~ (roop+1) ~ " month")|date_modify('-1 day')|date('W') - 1 %}
+{% endif %}
+
+{% if ((day|date_modify("+" ~ (roop+1) ~ " month")|date_modify('-1 day')|date('w')) == "0") %}
+{% set roop_week = (roop_week+1) %}
+{% endif %}
+{% set day = day|date_modify("+" ~ roop ~ " month")|date_modify('-' ~ day|date_modify("+" ~ roop ~ " month")|date('w') ~ 'days') %}
+
+	<table>
+		<caption>{{ year }}年{{ month }}月の休業日</caption>
+		<thead><tr><th id="sunday">日</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th id="saturday">土</th></tr></thead>
+		<tbody>
+{% for i in (0..roop_week) %}
+			<tr>
+{% for j in (0..6) %}
+{% if day|date('n') == month %}
+{% if HolidayWeek[j] %}
+				<td class="holiday">{{ day|date('j') }}</td>
+{% else %}
+{% if Holidays[month][day|date('j')] is defined and Holidays[month][day|date('j')] is not empty %}
+				<td class="holiday">{{ day|date('j') }}</td>
+{% else %}
+				<td>{{ day|date('j') }}</td>
+{% endif %}
+{% endif %}
+{% else %}
+				<td>&nbsp;</td>
+{% endif %}
+{% set day = day|date_modify('+1day') %}
+{% endfor %}
+			</tr>
+{% endfor %}
+		</tbody>
+	</table>
+{% endfor %}
+</div>
+
+<span class="closed_color">休業日</span>
+				</li>
+			</ul>
+
+			<ul class="btn_more">
+				<li><a href="/studio/category/old_blog/">過去のブログはこちら</a></li>
+				<li><a href="/studio/category/info/">一覧はこちら</a></li>
+			</ul>
+
+
+		</div>
+<!--		</div>
+
+					<div class="col-xs-12 col-md-2 box box_height box_cal">
+-->
+
+
+
+	</div>
+
+
+
+
+</div><!-- /.inner -->
+</div>
+{% endblock %}

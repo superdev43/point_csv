@@ -1,0 +1,58 @@
+{#
+ * This file is part of the Recommend Product plugin
+ *
+ * Copyright (C) 2016 LOCKON CO.,LTD. All Rights Reserved.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+#}
+
+<!-- ▼item_list▼ -->
+<div id="top_recommend_item">
+	<div class="inner">
+		
+		<div class="box recommend_box">
+			<div class="bg_box">
+				<h2><img src="/img/home/h_recommend_item.png" alt="おすすめ商品" /></h2>
+
+				<div id="item_list">
+					<ul class="recommend_item_list">
+						{% for RecommendProduct in recommend_products %}
+						<li class="col-xs-6">
+							<div class="pickup_item">
+								<a href="{{ url('product_detail', {'id': RecommendProduct.Product.id}) }}">
+									<div class="img_box match_height">
+										<p><img src="{{ app.config.image_save_urlpath }}/{{ RecommendProduct.Product.mainFileName|no_image_product }}"></p>
+									</div>
+									
+									<div class="text_box">
+										<!--<p class="item_comment none">{{ RecommendProduct.comment|raw|nl2br }}</p>-->
+
+											<p class="item_name product_name">{{ RecommendProduct.Product.name }}</p>
+											<p class="item_price price">
+												{% if RecommendProduct.Product.hasProductClass %}
+													{% if RecommendProduct.Product.getPrice02Min == RecommendProduct.Product.getPrice02Max %}
+														{{ RecommendProduct.Product.getPrice02IncTaxMin|price }}
+													{% else %}
+														{{ RecommendProduct.Product.getPrice02IncTaxMin|price }} ～<!-- {{ RecommendProduct.Product.getPrice02IncTaxMax|price }}-->
+													{% endif %}
+												{% else %}
+													{{ RecommendProduct.Product.getPrice02IncTaxMin|price }}
+												{% endif %}
+											</p>
+
+									</div>
+								</a>
+							</div>
+						</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div><!-- /.bg_box -->
+		</div><!-- /.recommend_box -->
+	</div><!-- /.irow -->
+</div><!-- /#top_recommend_item -->
+
+
+
+<!-- ▲item_list▲ -->

@@ -1,0 +1,97 @@
+{#
+This file is part of EC-CUBE
+
+Copyright(c) 2000-2015 LOCKON CO.,LTD. All Rights Reserved.
+
+http://www.lockon.co.jp/
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+#}
+<div class="drawer_block pc header_bottom_area">
+	<nav id="gnav">
+		<ul>
+			<li class="{% if PageLayout.url == "homepage" %}active{% endif %}"><a href="{{ url('homepage') }}">HOME</a></li>
+
+			<li class="btn_ac">レオタード/ウェア
+				<ul class="lv2">
+					<li><a href="{{ url('homepage') }}products/list?category_id=7">レオタード</a></li>
+					<!--<li><a href="{{ url('homepage') }}products/list?category_id=15">プチオーダーレオタード</a></li>-->
+					<li><a href="{{ url('homepage') }}products/list?category_id=10">ニットトップス・ワンピース</a></li>
+					<li><a href="{{ url('homepage') }}products/list?category_id=9">スカート</a></li>
+					<li><a href="{{ url('homepage') }}products/list?category_id=11">パンツ・レッグウォーマー</a></li>
+					<li><a href="{{ url('homepage') }}products/list?category_id=21">ふわふわニットシリーズ</a></li>
+					<li><a href="{{ url('homepage') }}products/list?category_id=12">セレクトシリーズ</a></li>
+				</ul>
+			</li>
+			<li class="btn_ac">タイツ/シューズ/その他用品
+				<ul class="lv2">
+					<li><a href="{{ url('homepage') }}products/list?category_id=13">タイツ・ショーツ・ボディファンデーション</a></li>
+					<li><a href="{{ url('homepage') }}products/list?category_id=18">バレエシューズ</a></li>
+				</ul>
+			</li>
+			<li class="btn_ac">ギフト/小物
+				<ul class="lv2">
+					<li><a href="{{ url('homepage') }}products/list?category_id=14">シュシュ・シニヨンネット</a></li>
+					<!--<li><a href="{{ url('homepage') }}products/list?category_id=17">名入れ刺繍グッズ</a></li>-->
+					<li><a href="{{ url('homepage') }}products/list?category_id=24">刺繍タオルハンカチ</a></li>
+					<li><a href="{{ url('homepage') }}products/list?category_id=25">刺繍フェイスタオル</a></li>
+					<li><a href="{{ url('homepage') }}products/list?category_id=26">刺繍バッグ</a></li>
+					<li><a href="{{ url('homepage') }}products/list?category_id=19">バレエ雑貨</a></li>
+				</ul>
+			</li>
+			<li class="{% if PageLayout.url == "size" %}active{% endif %}"><a href="{{ url('homepage') }}size">サイズ/生地</a></li>
+			<li class="{% if PageLayout.url == "help_guide" %}active{% endif %}"><a href="{{ url('homepage') }}help/guide">ご注文について</a></li>
+			<li class="tablet_hide pc_hide {% if PageLayout.url == "cart" %}active{% endif %}"><a href="{{ url('homepage') }}cart">カート</a></li>
+			<li class="tablet_hide pc_hide {% if PageLayout.url == "mypage" %}active{% endif %}"><a href="{{ url('homepage') }}mypage">マイページ</a></li>
+			<li class="tablet_hide pc_hide {% if PageLayout.url == "access" %}active{% endif %}"><a href="{{ url('homepage') }}access">実店舗</a></li>
+			<li class="tablet_hide pc_hide {% if PageLayout.url == "studio" %}active{% endif %}"><a href="{{ url('homepage') }}studio/">レンタルスタジオ</a></li>
+			<li class="tablet_hide pc_hide {% if PageLayout.url == "ordermade" %}active{% endif %}"><a href="{{ url('homepage') }}ordermade">オーダーメイド</a></li>
+			<li class="tablet_hide pc_hide {% if PageLayout.url == "handmade" %}active{% endif %}"><a href="{{ url('homepage') }}handmade">ハンドメイド</a></li>
+			<li class="tablet_hide pc_hide {% if PageLayout.url == "contact" %}active{% endif %}"><a href="{{ url('homepage') }}contact">お問い合わせ</a></li>
+			<li class="btn_search hover"><span class="isable_link smart_hide tablet_hide"><img src="/img/common/head/icon_search.png" alt="Search" /></span>
+
+<div id="search" class="search">
+
+        <form method="get" id="searchform" action="{{ path('product_list') }}">
+            <div class="search_inner">
+                {{ form_widget(form.category_id) }}
+                <div class="input_search clearfix">
+                    {{ form_widget(form.name, {'attr': { 'placeholder' : "キーワードを入力" }} ) }}
+                    <button type="submit" class="bt_search"><svg class="cb cb-search"><use xlink:href="#cb-search" /></svg></button>
+                </div>
+            </div>
+            <div class="extra-form">
+                {% for f in form.getIterator %}
+                    {% if f.vars.name matches '[^plg*]' %}
+                        {{ form_label(f) }}
+                        {{ form_widget(f) }}
+                        {{ form_errors(f) }}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </form>
+
+    </div>
+			</li>
+
+			<li class="tablet_hide pc_hide center deliv_fee"><a href="" class="disable_link"><strong>5,000円</strong>(税別)以上<br>
+お買い上げで<strong>送料無料</strong></a></li>
+			<li class="tablet_hide pc_hide center tel"><a href="tel:0722947828" class="">TEL : <strong>072-294-7828</strong><br>OPEN 11:00～18:00・CLOSE 水曜日<br>〒590-0155 大阪府堺市南区野々井672-5</a></li>
+		</ul>
+	</nav>
+	<div class="inner search_tgl">
+
+	</div><!-- /.inner -->
+</div>

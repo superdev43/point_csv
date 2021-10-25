@@ -1,0 +1,43 @@
+Admin/Setting/Shop/delivery_edit.twig:
+    - [onTemplateAdminDeliveryEdit, NORMAL]
+Admin/Product/product.twig:
+    - [onTemplateAdminProductEdit, NORMAL]
+Admin/Product/product_class.twig:
+    - [onTemplateAdminProductClass, NORMAL]
+Product/detail.twig:
+    - [onTemplateProductDetail, NORMAL]
+Cart/index.twig:
+    - [onTemplateCart, NORMAL]
+Shopping/index.twig:
+    - [onTemplateShopping, NORMAL]
+
+front.shopping.index.initialize:
+    - [hookFrontShoppingIndexInitialize, NORMAL]
+eccube.event.controller.shopping_shipping_multiple.before:
+    - [hookFrontShoppingShippingMultipleBefore, NORMAL]
+front.shopping.confirm.processing:
+    - [completeShopping, FIRST]
+front.shopping.complete.initialize:
+    - [completeShopping, NORMAL]
+front.shopping.shipping.multiple.complete:
+    - [completeShopping, NORMAL]
+admin.setting.shop.delivery.edit.complete:
+    - [hookAdminDeliveryEditComplete, NORMAL]
+admin.product.edit.complete:
+    - [hookAdminProductEditComplete, NORMAL]
+admin.product.copy.complete:
+    - [hookAdminProductCopyComplete, NORMAL]
+admin.product.product.class.edit.complete:
+    - [hookAdminProductClassComplete, NORMAL]
+admin.product.product.class.edit.update:
+    - [hookAdminProductClassComplete, NORMAL]
+
+admin.product.csv.export:
+    - [hookAdminProductCsvExport, NORMAL]
+
+csvimportproductext.admin.product.csv.import.product.descriptions:
+    - [hookAdminProductCsvImportProductDescriptions, NORMAL]
+csvimportproductext.admin.product.csv.import.product.check:
+    - [hookAdminProductCsvImportProductCheck, NORMAL]
+csvimportproductext.admin.product.csv.import.product.process:
+    - [hookAdminProductCsvImportProductProcess, NORMAL]

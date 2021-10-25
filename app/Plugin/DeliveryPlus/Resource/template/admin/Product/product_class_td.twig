@@ -1,0 +1,18 @@
+{#
+* Plugin Name : DeliveryPlus
+*
+* Copyright (C) 2016 BraTech Co., Ltd. All Rights Reserved.
+* http://www.bratech.co.jp/
+*
+* For the full copyright and license information, please view the LICENSE
+* file that was distributed with this source code.
+#}
+
+<td id="result_box__weight--{{ product_class_form.vars.name }}">
+    {{ form_widget(product_class_form.plg_deliveryplus_weight) }}
+    {{ form_errors(product_class_form.plg_deliveryplus_weight) }}
+</td>
+<td id="result_box__size--{{ product_class_form.vars.name }}">
+    {{ form_widget(product_class_form.plg_deliveryplus_size) }}
+    {{ form_errors(product_class_form.plg_deliveryplus_size) }}
+</td>

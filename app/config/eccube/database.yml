@@ -1,0 +1,9 @@
+database:
+    driver: 'pdo_mysql'
+    host: 'mysql2107.xserver.jp'
+    dbname: 'cssv15_tiaraec'
+    port: ''
+    user: 'cssv15_tiaraec'
+    password : 'lai2910ao1abn'
+    charset: utf8
+    defaultTableOptions: { collate: utf8_general_ci }
